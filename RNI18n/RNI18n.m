@@ -1,27 +1,39 @@
-//
-//  RNI18n.m
-//  RNI18n
-//
-//  Created by Alexander Zaytsev on 14/06/15.
-//  Copyright (c) 2015 Alexander Zaytsev. All rights reserved.
-//
-
+#import <UIKit/UIKit.h>
 #import "RNI18n.h"
 
-@interface RNI18n ()
--(NSString*) getCurrentLocale;
-@end
-
 @implementation RNI18n
+
 RCT_EXPORT_MODULE();
 
--(NSString*) getCurrentLocale{
-    NSString *localeString=[[NSLocale preferredLanguages] objectAtIndex:0];
-    return localeString;
++ (BOOL)requiresMainQueueSetup {
+  return YES;
 }
 
-- (NSDictionary *)constantsToExport
-{
-    return @{ @"locale": [self getCurrentLocale] };
+- (NSMutableArray *)toLanguageTags:(NSArray *)languages {
+  NSMutableArray *languageTags = [NSMutableArray array];
+
+  for (id l in languages) {
+    [languageTags addObject:[l stringByReplacingOccurrencesOfString:@"_" withString:@"-"]];
+  }
+
+  return languageTags;
 }
+
+- (NSArray *)getPreferredLanguages {
+  NSArray *preferredLanguages = [NSLocale preferredLanguages];
+
+  return [[[UIDevice currentDevice] systemVersion] floatValue] >= 9
+    ? preferredLanguages
+    : [self toLanguageTags:preferredLanguages];
+}
+
+- (NSDictionary *)constantsToExport {
+  return @{ @"languages": [self getPreferredLanguages] };
+}
+
+RCT_EXPORT_METHOD(getLanguages:(RCTPromiseResolveBlock)resolve
+                  rejecter:(__unused RCTPromiseRejectBlock)reject) {
+  resolve([self getPreferredLanguages]);
+}
+
 @end
