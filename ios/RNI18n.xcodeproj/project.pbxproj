@@ -37,8 +37,8 @@
 
 /* Begin PBXFileReference section */
 		CDD7BF781B2D5125006FDA75 /* libRNI18n.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNI18n.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDD7BF7B1B2D5125006FDA75 /* RNI18n.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNI18n.h; sourceTree = "<group>"; };
-		CDD7BF7D1B2D5125006FDA75 /* RNI18n.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNI18n.m; sourceTree = "<group>"; };
+		CDD7BF7B1B2D5125006FDA75 /* RNI18n.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNI18n.h; path = ../RNI18n.h; sourceTree = "<group>"; };
+		CDD7BF7D1B2D5125006FDA75 /* RNI18n.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RNI18n.m; path = ../RNI18n.m; sourceTree = "<group>"; };
 		CDD7BF831B2D5126006FDA75 /* RNI18nTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RNI18nTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,6 +147,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = CDD7BF6F1B2D5125006FDA75;
