@@ -1,0 +1,6 @@
+framework module Pods_RNI18nTests {
+  umbrella header "Pods-RNI18nTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
